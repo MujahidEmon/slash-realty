@@ -11,7 +11,13 @@ const Routes = createBrowserRouter([
             {
                 path: '/',
                 element:<Home></Home>,
-                loader: () => fetch('/featured.json')
+                loader: async () => {
+                    const featuredResponse = await fetch('/featured.json');
+                    const reviewsResponse = await fetch('/reviews.json');
+                    const featured = await featuredResponse.json();
+                    const reviews = await reviewsResponse.json();
+                    return { featured, reviews };
+                  }
             }
         ]
     }

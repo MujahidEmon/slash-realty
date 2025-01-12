@@ -1,0 +1,38 @@
+[
+    {
+      "date": "March 15, 2021",
+      "review": "I have always found your team to be extremely prompt and professional with all dealings I have had with them. You always keep me updated on the progress.",
+      "name": "Kate Anderson",
+      "designation": "Decorator",
+      "image": "https://i.ibb.co/Y8JwLm0/user1.jpg"
+    },
+    {
+      "date": "June 20, 2022",
+      "review": "Your team’s attention to detail and commitment to quality is unmatched. I’m impressed with how seamless everything has been from start to finish.",
+      "name": "Michael Carter",
+      "designation": "Architect",
+      "image": "https://i.ibb.co/JzD8QPL/user2.jpg"
+    },
+    {
+      "date": "September 10, 2023",
+      "review": "The customer service experience was exceptional. Everyone was knowledgeable and courteous, making the process a breeze.",
+      "name": "Sophia Patel",
+      "designation": "Interior Designer",
+      "image": "https://i.ibb.co/Zd9Yf5r/user3.jpg"
+    },
+    {
+      "date": "January 5, 2023",
+      "review": "I appreciate the consistent updates and clear communication. It made working with your team stress-free and enjoyable.",
+      "name": "James Wright",
+      "designation": "Contractor",
+      "image": "https://i.ibb.co/3dL1Jk9/user4.jpg"
+    },
+    {
+      "date": "November 12, 2020",
+      "review": "Thank you for going above and beyond. Your professionalism and dedication are evident in the results. Highly recommended!",
+      "name": "Emily Johnson",
+      "designation": "Real Estate Agent",
+      "image": "https://i.ibb.co/TP5n9t5/user5.jpg"
+    }
+  ]
+  

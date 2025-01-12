@@ -2,9 +2,15 @@ import { useLoaderData } from "react-router-dom";
 import Slider from "../Components/Slider/Slider";
 import FeaturedPropCard from "../Components/FeaturedPropertyCard/FeaturedPropCard";
 import { GoDotFill } from "react-icons/go";
+import { MdRealEstateAgent } from "react-icons/md";
+import { PiBuildingApartment } from "react-icons/pi";
+import { IoPeople } from "react-icons/io5";
+import Marquee from "react-fast-marquee";
+import ReviewCard from "../Components/ReviewCard/ReviewCard";
+import Footer from "../Components/Footer/Footer";
 
 const Home = () => {
-  const properties = useLoaderData();
+  const {featured, reviews} = useLoaderData();
   // const {name} = useContext(AuthContext)
   return (
     <>
@@ -40,15 +46,20 @@ const Home = () => {
           <Slider></Slider>
         </div>
       </div>
+
+      {/* Feature Properties */}
       <div className="mt-6 bg-[#fff7ec] p-3 lg:p-7 ">
         <div className="max-w-7xl mx-auto">
           <h1 className="text-3xl lg:text-5xl flex items-center">
-            <GoDotFill></GoDotFill>Featured Properties
+            <GoDotFill color="#22c55e"></GoDotFill><span className="text-green-500">Featured Properties</span>
           </h1>
-          <div className="mt-16 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 ">
-            {properties.map((p, idx) => (
-              <FeaturedPropCard key={idx} p={p}></FeaturedPropCard>
+          <div className="mt-8 lg:12 pr-8 ">
+            <Marquee pauseOnHover gap={20} gradient={false}>
+
+            {featured.slice(0,3).map((p, idx) => (
+              <div key={idx} className="mr-8"><FeaturedPropCard  p={p}></FeaturedPropCard></div>
             ))}
+            </Marquee>
           </div>
         </div>
       </div>
@@ -56,75 +67,55 @@ const Home = () => {
       {/* Overview section */}
       <div
         style={{
-          backgroundImage: "url('https://i.ibb.co.com/GMKY3pk/overview.jpg')",
+          backgroundImage: "url('https://i.ibb.co.com/68L3cV9/bg-02-1920x916.jpg')",
         }}
-        className="h-fit bg-opacity-90"
+        className="lg:h-60 h-96 flex   justify-center bg-cover items-center  "
       >
-        <div className="stats bg-transparent shadow">
+        <div className="stats flex md:flex-row flex-col bg-opacity-75 lg:w-[1280px] w-full lg:mx-12 mx-auto shadow">
           <div className="stat">
             <div className="stat-figure text-secondary">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                className="inline-block h-8 w-8 stroke-current"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                ></path>
-              </svg>
+              <PiBuildingApartment size={40}></PiBuildingApartment>
             </div>
-            <div className="stat-title">Downloads</div>
-            <div className="stat-value">31K</div>
-            <div className="stat-desc">Jan 1st - Feb 1st</div>
+            <div className="stat-value ">749</div>
+            <div className="stat-title font-semibold text-xl ">Properties on Map</div>
           </div>
 
           <div className="stat">
             <div className="stat-figure text-secondary">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                className="inline-block h-8 w-8 stroke-current"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
-                ></path>
-              </svg>
+              <MdRealEstateAgent size={40}></MdRealEstateAgent>
             </div>
-            <div className="stat-title">New Users</div>
-            <div className="stat-value">4,200</div>
-            <div className="stat-desc">↗︎ 400 (22%)</div>
+            <div className="stat-value ">31</div>
+            <div className="stat-title font-semibold text-xl ">Professional Agents</div>
           </div>
 
           <div className="stat">
             <div className="stat-figure text-secondary">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                className="inline-block h-8 w-8 stroke-current"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"
-                ></path>
-              </svg>
+              <IoPeople size={40}></IoPeople>
             </div>
-            <div className="stat-title">New Registers</div>
-            <div className="stat-value">1,200</div>
-            <div className="stat-desc">↘︎ 90 (14%)</div>
+            <div className="stat-value ">15k</div>
+            <div className="stat-title font-semibold text-xl ">Happy Clients</div>
           </div>
         </div>
       </div>
+
+      {/* Reviews */}
+      <div className=" bg-[#fff7ec] p-3 lg:p-7 ">
+        <div className="max-w-7xl mx-auto">
+          <h1 className="text-3xl lg:text-5xl flex items-center">
+            <GoDotFill color="#22c55e"></GoDotFill><span className="text-green-500">What People Say</span>
+          </h1>
+          <div className="mt-8 lg:12 pr-8 ">
+            <Marquee pauseOnHover gap={20} gradient={false}>
+
+            {reviews.slice(0,3).map((r, idx) => (
+              <div key={idx} className="mr-8"><ReviewCard r={r}></ReviewCard></div>
+            ))}
+            </Marquee>
+          </div>
+        </div>
+      </div>
+
+      <Footer></Footer>
     </>
   );
 };
