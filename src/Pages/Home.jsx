@@ -7,7 +7,6 @@ import { PiBuildingApartment } from "react-icons/pi";
 import { IoPeople } from "react-icons/io5";
 import Marquee from "react-fast-marquee";
 import ReviewCard from "../Components/ReviewCard/ReviewCard";
-import Footer from "../Components/Footer/Footer";
 
 const Home = () => {
   const {featured, reviews} = useLoaderData();
@@ -51,7 +50,7 @@ const Home = () => {
       <div className="mt-6 bg-[#fff7ec] p-3 lg:p-7 ">
         <div className="max-w-7xl mx-auto">
           <h1 className="text-3xl lg:text-5xl flex items-center">
-            <GoDotFill color="#22c55e"></GoDotFill><span className="text-green-500">Featured Properties</span>
+            <GoDotFill color="#22c55e"></GoDotFill><span className="text-green-500 font-medium">Featured Estates</span>
           </h1>
           <div className="mt-8 lg:12 pr-8 ">
             <Marquee pauseOnHover gap={20} gradient={false}>
@@ -102,7 +101,7 @@ const Home = () => {
       <div className=" bg-[#fff7ec] p-3 lg:p-7 ">
         <div className="max-w-7xl mx-auto">
           <h1 className="text-3xl lg:text-5xl flex items-center">
-            <GoDotFill color="#22c55e"></GoDotFill><span className="text-green-500">What People Say</span>
+            <GoDotFill color="#22c55e"></GoDotFill><span className="text-green-500 font-medium">What People Say</span>
           </h1>
           <div className="mt-8 lg:12 pr-8 ">
             <Marquee pauseOnHover gap={20} gradient={false}>
@@ -115,7 +114,7 @@ const Home = () => {
         </div>
       </div>
 
-      <Footer></Footer>
+      
     </>
   );
 };

@@ -1,4 +1,6 @@
-import React from "react";
+import { FaKitchenSet, FaRegSquareFull } from "react-icons/fa6";
+import { LuBath } from "react-icons/lu";
+import { MdOutlineBedroomParent } from "react-icons/md";
 
 const PropertyCard = ({p}) => {
     const {
