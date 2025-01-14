@@ -2,6 +2,8 @@ import { createBrowserRouter } from "react-router-dom";
 import Root from "../Layout/Root";
 import Home from "../Pages/Home";
 import Properties from "../Pages/Properties/Properties";
+import Login from "../Pages/Login/Login";
+import Register from "../Pages/Register/Register";
 
 
 const Routes = createBrowserRouter([
@@ -24,6 +26,14 @@ const Routes = createBrowserRouter([
                 path: '/properties',
                 element: <Properties></Properties>,
                 loader: () => fetch('/featured.json')
+            },
+            {
+                path: '/login',
+                element: <Login></Login>
+            },
+            {
+                path: '/register',
+                element: <Register></Register>
             }
         ]
     }

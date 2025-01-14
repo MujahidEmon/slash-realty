@@ -1,6 +1,22 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Navbar = () => {
+
+  const {user, logout} = useContext(AuthContext);
+
+  const handleSignOut = () => {
+    logout()
+    .then(result => {
+      console.log(result.user);
+    })
+    .catch(error => {
+      console.error(error);
+      
+    })
+  }
+
   return (
     <div className="navbar px-3  lg:px-7 bg-base-100  mb-6">
       <div className="navbar-start">
@@ -64,7 +80,8 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         <div className="dropdown dropdown-end">
-          <div
+          {
+            user ? <div
             tabIndex={0}
             role="button"
             className="btn btn-ghost btn-circle avatar"
@@ -75,7 +92,15 @@ const Navbar = () => {
                 src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
               />
             </div>
-          </div>
+          </div> :
+          <Link
+            to={'/login'}
+            className=" rounded px-5 py-2.5 overflow-hidden group bg-green-500 relative hover:bg-gradient-to-r hover:from-green-500 hover:to-green-400 text-white hover:ring-2 hover:ring-offset-2 hover:ring-green-400 transition-all ease-out duration-300"
+          >
+            <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
+            <span className="relative">Login</span>
+          </Link>
+          }
           <ul
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
@@ -90,7 +115,7 @@ const Navbar = () => {
               <a>Settings</a>
             </li>
             <li>
-              <a>Logout</a>
+              <a onClick={handleSignOut}>Logout</a>
             </li>
           </ul>
         </div>
