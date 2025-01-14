@@ -1,18 +1,25 @@
 import { useContext, useState } from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa6";
-import { Link, useNavigate } from "react-router-dom";
+import { data, Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { useForm } from "react-hook-form";
 
 const Login = () => {
   const [showPass, setShowPass] = useState(false);
   const {login} = useContext(AuthContext)
   const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    const form = new FormData(e.currentTarget);
-    const email = form.get('email');
-    const password = form.get('password');
+
+  const onSubmit = (data) => {
+    const email = data.email;
+    const password = data.password;
+
+    console.log(email, password);
     login(email, password)
     .then(result => {
       console.log(result.user);
@@ -22,11 +29,26 @@ const Login = () => {
       console.error(error);
       
     })
+
+  }
+
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const form = new FormData(e.currentTarget);
+    const email = form.get('email');
+    const password = form.get('password');
+    
   };
+
+  
+
+
   return (
     <div className="flex border-2 mt-6 bg-base-100 rounded-lg max-w-xl mx-auto  font-montserrat justify-center ">
       <form
-        onSubmit={handleLogin}
+        // onSubmit={handleLogin}
+        onSubmit={handleSubmit(onSubmit)}
         className="max-w-lg w-full px-6 py-8 mx-auto"
       >
         <div className="mb-6">
@@ -39,11 +61,12 @@ const Login = () => {
             </label>
             <div className="relative flex items-center">
               <input
-                name="email"
-                type="email"
-                required
+                // name="email"
+                // type="email"
+                // required
                 className="w-full text-sm text-gray-800 border-b border-gray-300 focus:border-blue-600 px-2 py-3 outline-none"
                 placeholder="Enter email"
+                {...register('email', {required: true})}
               />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -83,11 +106,12 @@ const Login = () => {
             </label>
             <div className="relative flex items-center">
               <input
-                name="password"
+                // name="password"
                 type={showPass ? "text" : "password"}
                 required
                 className="w-full text-sm text-gray-800 border-b border-gray-300 focus:border-blue-600 px-2 py-3 outline-none"
                 placeholder="Enter password"
+                {...register('password')}
               />
               <svg
                 onClick={() => setShowPass(!showPass)}
