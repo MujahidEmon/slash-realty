@@ -3,10 +3,12 @@ import { FaGithub, FaGoogle } from "react-icons/fa6";
 import { data, Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { useForm } from "react-hook-form";
+import auth from "../../Firebase/firebase.config";
+import { updateProfile } from "firebase/auth";
 
 const Login = () => {
   const [showPass, setShowPass] = useState(false);
-  const {login} = useContext(AuthContext)
+  const {login, googleLogin, gitHubLogin, userUpdate} = useContext(AuthContext)
   const navigate = useNavigate();
   const {
     register,
@@ -22,6 +24,34 @@ const Login = () => {
     .then(result => {
       console.log(result.user);
       navigate('/');
+    })
+    .catch(error => {
+      console.error(error);
+    })
+  }
+
+  // google login
+  const handleGoogleLogin = () => {
+    
+    googleLogin()
+    .then(result => {
+      console.log(result.user);
+      const photo = result.user.photoURL;
+      const name = result.user.displayName;
+      console.log(name, photo);
+      userUpdate(name, photo)
+      .then(() => {
+        // Profile updated!
+        // ...
+      }).catch((error) => {
+        // An error occurred
+        // ...
+        console.error(error);
+        
+      });
+      navigate('/');
+
+      
     })
     .catch(error => {
       console.error(error);
@@ -170,7 +200,7 @@ const Login = () => {
         </div>
 
         <div className=" flex items-center gap-6 justify-center">
-          <button className="btn btn-circle">
+          <button onClick={handleGoogleLogin} className="btn btn-circle">
             <FaGoogle size={30}></FaGoogle>
           </button>
           <button className="btn btn-circle">

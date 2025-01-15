@@ -79,7 +79,7 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <h1 className="font-semibold text-green-500  mr-3">{user.displayName}</h1>
+        <h1 className="font-semibold text-green-500  mr-3">{user?.displayName}</h1>
         <div className="dropdown dropdown-end">
           {
             user ? <div

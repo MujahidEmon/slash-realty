@@ -11,6 +11,11 @@ const AuthProvider = ({children}) => {
     // google provider
     const googleProvider = new GoogleAuthProvider();
 
+    // forcing to select account
+    googleProvider.setCustomParameters({
+        prompt: "select_account",
+      });
+
     // gitHub provider
 
     const gitHubProvider = new GithubAuthProvider();
