@@ -79,6 +79,7 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
+        <h1 className="font-semibold text-green-500  mr-3">{user.displayName}</h1>
         <div className="dropdown dropdown-end">
           {
             user ? <div
@@ -89,7 +90,7 @@ const Navbar = () => {
             <div className="w-10 rounded-full">
               <img
                 alt="Tailwind CSS Navbar component"
-                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                src={user ? user.photoURL : "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"}
               />
             </div>
           </div> :

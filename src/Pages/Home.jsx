@@ -9,8 +9,9 @@ import Marquee from "react-fast-marquee";
 import ReviewCard from "../Components/ReviewCard/ReviewCard";
 
 const Home = () => {
-  const {featured, reviews} = useLoaderData();
+  const {featured, reviews, user} = useLoaderData();
   // const {name} = useContext(AuthContext)
+  console.log(user);
   return (
     <>
       <div className="flex lg:flex-row lg:gap-0 gap-6 max-w-7xl mx-auto flex-col">

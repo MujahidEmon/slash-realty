@@ -18,8 +18,6 @@ const Login = () => {
   const onSubmit = (data) => {
     const email = data.email;
     const password = data.password;
-
-    console.log(email, password);
     login(email, password)
     .then(result => {
       console.log(result.user);
@@ -27,22 +25,8 @@ const Login = () => {
     })
     .catch(error => {
       console.error(error);
-      
     })
-
   }
-
-
-  const handleLogin = (e) => {
-    e.preventDefault();
-    const form = new FormData(e.currentTarget);
-    const email = form.get('email');
-    const password = form.get('password');
-    
-  };
-
-  
-
 
   return (
     <div className="flex border-2 mt-6 bg-base-100 rounded-lg max-w-xl mx-auto  font-montserrat justify-center ">
@@ -74,7 +58,7 @@ const Login = () => {
                 stroke="#bbb"
                 className="w-[18px] h-[18px] absolute right-2"
                 viewBox="0 0 682.667 682.667"
-              >
+                >
                 <defs>
                   <clipPath id="a" clipPathUnits="userSpaceOnUse">
                     <path d="M0 512h512V0H0Z" data-original="#000000"></path>
@@ -83,21 +67,22 @@ const Login = () => {
                 <g
                   clipPath="url(#a)"
                   transform="matrix(1.33 0 0 -1.33 0 682.667)"
-                >
+                  >
                   <path
                     fill="none"
                     strokeMiterlimit="10"
                     strokeWidth="40"
                     d="M452 444H60c-22.091 0-40-17.909-40-40v-39.446l212.127-157.782c14.17-10.54 33.576-10.54 47.746 0L492 364.554V404c0 22.091-17.909 40-40 40Z"
                     data-original="#000000"
-                  ></path>
+                    ></path>
                   <path
                     d="M472 274.9V107.999c0-11.027-8.972-20-20-20H60c-11.028 0-20 8.973-20 20V274.9L0 304.652V107.999c0-33.084 26.916-60 60-60h392c33.084 0 60 26.916 60 60v196.653Z"
                     data-original="#000000"
-                  ></path>
+                    ></path>
                 </g>
               </svg>
             </div>
+            {errors.email && <span className="text-primary text-xs font-medium">Please Enter Your Email</span>}
           </div>
 
           <div className="mt-4">
@@ -111,7 +96,19 @@ const Login = () => {
                 required
                 className="w-full text-sm text-gray-800 border-b border-gray-300 focus:border-blue-600 px-2 py-3 outline-none"
                 placeholder="Enter password"
-                {...register('password')}
+                {...register("password", {
+                  required: "Password is required",
+                  minLength: {
+                    value: 6,
+                    message: "Password must be at least 6 characters",
+                  },
+                  validate: {
+                    hasUppercase: (value) =>
+                      /[A-Z]/.test(value) || "Must contain at least one uppercase letter",
+                    hasLowercase: (value) =>
+                      /[a-z]/.test(value) || "Must contain at least one lowercase letter",
+                  },
+                })}
               />
               <svg
                 onClick={() => setShowPass(!showPass)}
@@ -127,6 +124,7 @@ const Login = () => {
                 ></path>
               </svg>
             </div>
+            {errors.password && <p>{errors.password.message}</p>}
           </div>
 
           <div className="flex flex-wrap items-center justify-between gap-4 mt-6">
