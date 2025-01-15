@@ -1,9 +1,9 @@
-
+import banner from "../../assets/property page.svg"
 
 const PropertiesBanner = () => {
     return (
         <div className="">
-            <img src="/src/assets/propbanner.jpg" className="w-screen object-cover  lg:h-[500px] h-[300px]" alt="" />
+            <img src={banner} className="w-screen object-cover   lg:h-[500px] h-[200px]" alt="" />
         </div>
     );
 };

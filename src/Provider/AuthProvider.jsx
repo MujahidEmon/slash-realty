@@ -17,7 +17,6 @@ const AuthProvider = ({children}) => {
       });
 
     // gitHub provider
-
     const gitHubProvider = new GithubAuthProvider();
 
     const createUser = (email, password) => {

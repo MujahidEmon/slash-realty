@@ -5,7 +5,7 @@ import Footer from '../Components/Footer/Footer';
 
 const Root = () => {
     return (
-        <div className='font-poppins '>
+        <div className='font-poppins bg-[#f4f6f9]'>
             <Navbar></Navbar>
             <Outlet></Outlet>
             <Footer></Footer>

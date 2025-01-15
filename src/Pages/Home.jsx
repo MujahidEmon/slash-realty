@@ -53,7 +53,7 @@ const Home = () => {
           <h1 className="text-3xl lg:text-5xl flex items-center">
             <GoDotFill color="#22c55e"></GoDotFill><span className="text-green-500 font-medium">Featured Estates</span>
           </h1>
-          <div className="mt-8 lg:12 pr-8 ">
+          <div className="mt-8 lg:mt-12 pr-8 ">
             <Marquee pauseOnHover gap={20} gradient={false}>
 
             {featured.slice(0,3).map((p, idx) => (

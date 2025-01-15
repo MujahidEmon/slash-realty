@@ -18,7 +18,7 @@ const Navbar = () => {
   }
 
   return (
-    <div className="navbar px-3  lg:px-7 bg-base-100  mb-6">
+    <div className="navbar px-2  lg:px-7   mb-6">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -79,7 +79,7 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <h1 className="font-semibold text-green-500  mr-3">{user?.displayName}</h1>
+        <h1 className="font-semibold text-green-500  lg:mr-3">{user?.displayName}</h1>
         <div className="dropdown dropdown-end">
           {
             user ? <div

@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa6";
-import { data, Link, useNavigate } from "react-router-dom";
+import { data, Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { useForm } from "react-hook-form";
 import auth from "../../Firebase/firebase.config";
@@ -9,6 +9,7 @@ import { updateProfile } from "firebase/auth";
 const Login = () => {
   const [showPass, setShowPass] = useState(false);
   const {login, googleLogin, gitHubLogin, userUpdate} = useContext(AuthContext)
+  const location = useLocation();
   const navigate = useNavigate();
   const {
     register,
@@ -23,7 +24,8 @@ const Login = () => {
     login(email, password)
     .then(result => {
       console.log(result.user);
-      navigate('/');
+      navigate(location?.state ? location.state : '/')
+      console.log(location);
     })
     .catch(error => {
       console.error(error);
@@ -32,13 +34,14 @@ const Login = () => {
 
   // google login
   const handleGoogleLogin = () => {
-    
     googleLogin()
     .then(result => {
       console.log(result.user);
       const photo = result.user.photoURL;
       const name = result.user.displayName;
       console.log(name, photo);
+
+      // updating profile
       userUpdate(name, photo)
       .then(() => {
         // Profile updated!
@@ -49,12 +52,38 @@ const Login = () => {
         console.error(error);
         
       });
-      navigate('/');
-
+      navigate(location?.state ? location.state : '/')
+      console.log(location);
       
     })
     .catch(error => {
       console.error(error);
+    })
+  }
+
+  // gitHub login
+
+  const handleGitHubLogin = () => {
+    gitHubLogin()
+    .then(result => {
+      console.log(result.user);
+      
+      // setting displayName and profile pic to show on website
+      const name = result.user.displayName;
+      const photo = result.user.photoURL
+      updateProfile(name, photo)
+      .then(
+
+      )
+      .catch(error => {
+        console.error(error);
+        
+      })
+      navigate(location?.state ? location.state : '/')
+    })
+    .catch(error => {
+      console.error(error);
+      
     })
   }
 
@@ -203,7 +232,7 @@ const Login = () => {
           <button onClick={handleGoogleLogin} className="btn btn-circle">
             <FaGoogle size={30}></FaGoogle>
           </button>
-          <button className="btn btn-circle">
+          <button onClick={handleGitHubLogin} className="btn btn-circle">
             <FaGithub size={30}></FaGithub>
           </button>
         </div>

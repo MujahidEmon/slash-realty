@@ -1,8 +1,10 @@
 import { FaKitchenSet, FaRegSquareFull } from "react-icons/fa6";
 import { LuBath } from "react-icons/lu";
 import { MdOutlineBedroomParent } from "react-icons/md";
+import { Link, useParams } from "react-router-dom";
 
 const PropertyCard = ({p}) => {
+  
     const {
         id,
         estate_title,
@@ -19,7 +21,7 @@ const PropertyCard = ({p}) => {
         kitchens,
       } = p;
   return (
-    <div className="card bg-base-100 w-96 border ">
+    <div  className="card bg-base-100 lg:w-96 lg:mx-0 mx-6 border ">
       <figure>
         <img src={image} alt={estate_title} />
       </figure>
@@ -54,13 +56,13 @@ const PropertyCard = ({p}) => {
           {/* <div className="badge badge-outline">Fashion</div>
           <div className="badge badge-outline">Products</div> */}
           <p className="font-bold text-green-500">{price}</p>
-          <a
-            href="#_"
+          <Link
+            to={`/properties/${id}`}
             className=" rounded px-5 py-2.5 overflow-hidden group bg-green-500 relative hover:bg-gradient-to-r hover:from-green-500 hover:to-green-400 text-white hover:ring-2 hover:ring-offset-2 hover:ring-green-400 transition-all ease-out duration-300"
           >
             <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
             <span className="relative">Show Property</span>
-          </a>
+          </Link>
         </div>
       </div>
     </div>
