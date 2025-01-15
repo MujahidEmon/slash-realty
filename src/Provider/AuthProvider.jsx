@@ -20,23 +20,30 @@ const AuthProvider = ({children}) => {
     const gitHubProvider = new GithubAuthProvider();
 
     const createUser = (email, password) => {
+        setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
+        
     }
 
     const login = (email, password) => {
+        setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
+        
     }
     const logout = () => {
+        setLoading(false)
         return signOut(auth)
     }
 
     // google signIn 
      const googleLogin = () => {
+         setLoading(false)
         return signInWithPopup(auth, googleProvider)
     }
 
     // gitHUb login
     const gitHubLogin = () =>{
+        setLoading(true)
         return signInWithPopup(auth, gitHubProvider)
     }
 
