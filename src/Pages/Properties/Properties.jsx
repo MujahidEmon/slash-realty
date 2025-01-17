@@ -2,9 +2,14 @@ import { useLoaderData } from "react-router-dom";
 import PropertyCard from "../../Components/PropertyCard/PropertyCard";
 import PropertiesBanner from "./PropertiesBanner";
 import { GoDotFill } from "react-icons/go";
+import { useEffect } from "react";
 
 
 const Properties = () => {
+
+  useEffect(() => {
+    document.title = 'SLASH Realty: Properties';
+  }, []);
   const properties = useLoaderData();
   return (
     <div className="mb-6 mt-0">

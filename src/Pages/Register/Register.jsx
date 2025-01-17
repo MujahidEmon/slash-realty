@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
@@ -7,6 +7,9 @@ import { updateProfile } from "firebase/auth";
 import auth from "../../Firebase/firebase.config";
 
 const Register = () => {
+   useEffect(() => {
+      document.title = 'SLASH Realty: Register';
+    }, []);
   const { createUser, userUpdate } = useContext(AuthContext);
   const [showPass, setShowPass] = useState(false);
   const {

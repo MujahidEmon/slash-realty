@@ -1,9 +1,13 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { useForm} from "react-hook-form"
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 
 const UpdateProfile = () => {
+     useEffect(() => {
+        document.title = 'SLASH Realty: Update Profile';
+      }, []);
     const {user, userUpdate} = useContext(AuthContext)
     const navigate = useNavigate()
 
@@ -23,6 +27,8 @@ const UpdateProfile = () => {
         console.log(name, photo);
             userUpdate(name, photo)
               .then(() => {
+                toast.success('Profile Updated')
+                
                 navigate('/profile')
                 
               })
@@ -54,6 +60,7 @@ const UpdateProfile = () => {
                 
                 <button className="btn btn-success mt-4 text-white">Save</button>
             </form>
+            <Toaster></Toaster>
         </div>
     );
 };

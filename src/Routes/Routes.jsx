@@ -8,12 +8,14 @@ import PropertyDetails from "../Pages/Properties/PropertyDetails/PropertyDetails
 import PrivateRoutes from "./PrivateRoutes";
 import Profile from "../Pages/Profile/Profile";
 import UpdateProfile from "../Pages/Profile/UpdateProfile";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 
 const Routes = createBrowserRouter([
     {
         path:'/',
         element: <Root></Root>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa6";
 import { data, Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
@@ -7,6 +7,9 @@ import auth from "../../Firebase/firebase.config";
 import { updateProfile } from "firebase/auth";
 
 const Login = () => {
+   useEffect(() => {
+      document.title = 'SLASH Realty: Login';
+    }, []);
   const [showPass, setShowPass] = useState(false);
   const {login, googleLogin, gitHubLogin, userUpdate} = useContext(AuthContext)
   const location = useLocation();

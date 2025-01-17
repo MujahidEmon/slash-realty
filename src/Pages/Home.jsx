@@ -7,8 +7,12 @@ import { PiBuildingApartment } from "react-icons/pi";
 import { IoPeople } from "react-icons/io5";
 import Marquee from "react-fast-marquee";
 import ReviewCard from "../Components/ReviewCard/ReviewCard";
+import { useEffect } from "react";
 
 const Home = () => {
+   useEffect(() => {
+      document.title = 'SLASH Realty: Home';
+    }, []);
   const {featured, reviews, user} = useLoaderData();
   // const {name} = useContext(AuthContext)
   console.log(user);

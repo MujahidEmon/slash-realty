@@ -1,9 +1,12 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { Link, Outlet } from "react-router-dom";
 
 
 const Profile = () => {
+     useEffect(() => {
+        document.title = 'SLASH Realty: Profile';
+      }, []);
     const {user} = useContext(AuthContext);
     console.log(user);
     return (
