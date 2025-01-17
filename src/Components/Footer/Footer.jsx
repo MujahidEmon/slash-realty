@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+import logo from '/src/assets/Picsar.png'
 
 const Footer = () => {
   return (
@@ -81,7 +81,7 @@ const Footer = () => {
           <div className="flex items-center lg:justify-center max-sm:-order-1">
             <a href="#_">
               <img
-                src="/src/assets/Picsar.png"
+                src={logo}
                 alt="logo"
                 className="sm:w-56 w-40"
               />

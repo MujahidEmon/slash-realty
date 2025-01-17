@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
-
+import logo from '/src/assets/Picsar.png'
 const Navbar = () => {
 
   const {user, logout} = useContext(AuthContext);
@@ -48,17 +48,17 @@ const Navbar = () => {
             <Link to={"/properties"}>Properties</Link>
           </li>
           <li>
-            <Link to={"/about"}>About Us</Link>
+            <Link >About Us</Link>
           </li>
           <li>
-            <Link to={"/contact"}>Contact Us</Link>
+            <Link >Contact Us</Link>
           </li>
           </ul>
         </div>
         <div className="">
           
           <Link to={"/"} className="lg:text-3xl font-bold  cursor-pointer text-xl">
-            <img src="/src/assets/Picsar.png" className="h-10"  alt="" />
+            <img src={logo} className="h-10"  alt="" />
           </Link>
         </div>
       </div>
@@ -71,10 +71,10 @@ const Navbar = () => {
             <Link to={"/properties"}>Properties</Link>
           </li>
           <li>
-            <Link to={"/about"}>About Us</Link>
+            <Link >About Us</Link>
           </li>
           <li>
-            <Link to={"/contact"}>Contact Us</Link>
+            <Link>Contact Us</Link>
           </li>
         </ul>
       </div>
@@ -107,10 +107,10 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
             <li>
-              <a className="justify-between">
+              <Link to={'/profile'} className="justify-between">
                 Profile
                 <span className="badge">New</span>
-              </a>
+              </Link>
             </li>
             <li>
               <a>Settings</a>
